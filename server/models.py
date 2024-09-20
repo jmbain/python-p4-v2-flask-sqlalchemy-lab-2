@@ -34,7 +34,7 @@ class Item(db.Model, SerializerMixin):
     name = db.Column(db.String)
     price = db.Column(db.Float)
 
-    reviews = db.relationship('Review', back_populates='item')
+    reviews = db.relationship('Review', back_populates='item', cascade='all, delete-orphan')
 
     serialize_rules = ['-reviews.item']
 
